@@ -1,0 +1,12 @@
+.text {
+    color: #fff !important;
+} .text:hover {
+    color: #e4e4e4 !important;
+}
+
+#logo {
+    font-family: 'Montserrat Alternates', sans-serif !important;
+    font-size: 24px;
+    color: #ff4848;
+}
+
