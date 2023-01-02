@@ -5,7 +5,7 @@
     end
 
     allow do 
-        origins "https://aid-platform-react.herokuapp.com"
+        origins "https://pet-platform-frontend-dev.herokuapp.com/"
         resource "*", headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head], credentials: true
     end
  end

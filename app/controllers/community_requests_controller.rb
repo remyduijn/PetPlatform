@@ -1,13 +1,13 @@
 class CommunityRequestsController < ApplicationController
   include CurrentUserConcern
-  before_action :set_community_request, only: %i[update mark_fulfilled]
+  before_action :set_community_request, only: %i[update mark_fulfilled destroy]
 
   def index
     @community_requests = CommunityRequest.all
     render json: @community_requests, status: :ok
   end
 
-  def create
+  def create 
     @community_request = CommunityRequest.new(community_request_params)
     @community_request.user_id = @current_user.id
     if @community_request.save
@@ -40,6 +40,14 @@ class CommunityRequestsController < ApplicationController
       render json: {request: @community_request, status: :ok}
     else
       render json: {errors: @community_request.errors.full_messages, status: 409}
+    end
+  end
+
+  def destroy
+    @community_request.destroy
+
+    respond_to do |format|
+      format.json { head :no_content }
     end
   end
 
